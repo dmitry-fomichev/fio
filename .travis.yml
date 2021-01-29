@@ -10,7 +10,21 @@ arch:
   - arm64
 env:
   global:
+    - secure: "1FXHdeXvmcXfeV47Poju7g"
     - MAKEFLAGS="-j 2"
+addons:
+  coverity_scan:
+
+    project:
+      name: dmitry-fomichev/fio
+      version: 3.25
+      description: fio
+
+    notification_email: dmitry.fomichev@wdc.com
+    build_command_prepend: ./configure
+    build_command: make
+    branch_pattern: coverity_scan
+
 matrix:
   include:
     - os: linux
