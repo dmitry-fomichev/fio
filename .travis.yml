@@ -10,7 +10,17 @@ arch:
   - arm64
 env:
   global:
+    - secure: "jyogmc5X6V9tjcnJNb+Ok/LuVkJHy+ZNEd6kSp4qAqvRcEYxZl9fS9nzzscwaC8uHwwCTEDEbvAWdQlzNPmkr4zqUc4Vi1M7BZzxnBUCKKWYI0jTo23npJqyncehx419+oFwLrGhLK7WBzSVRd7txo1puQ+tFbJ11/xsRvZXtW1jC8/LbHZfpiY1dRoXoA62sub0dnFju4t5o4JzeHTRb7X4sco0TQHl0smb1K5d9ShdlIVOvV1Sjd0ajMBkhfpWh17F58wO3h49Jfmg60sUOfCXaHAOi3EPAZBg85QyagGmfjRZpbnKdC257dyqURbyOAROpnxR1jhIIfBx24OI4s25sWGzgdYkLyHPRh4UlkOW88KxtwDoGn+6j9eYbh6KOdirZEGuyHwicmLlsnrcbaLv4+bs04hd3eg6Vox1GSzT9dDpMVpFfPDWtfJclBse2kNlw8mOuoRvC4FgVzhYQADJBOS7ciUq5qf9ho5ZPAUtrVS8STXXNStIWEU6VL73zuAbi5cdCVHY8DCgoRf8dFENdTIbQ4Z2WgPxCRO9qPS+/OEubAyN2/lHIzcCvv+wJM0WDsJLoIblrL4zqFK0ziUmrzw9cWeU+HTDha1Zs8wqnZsIk2H7UdBLQ9HgRA+/9zxN5TGPRKMvepQBO3j3XTKyxdmbo8/envaOpjw297I="
     - MAKEFLAGS="-j 2"
+addons:
+    coverity_scan:
+      project:
+        name: "dmitry-fomichev/fio"
+        description: "fio"
+    notification_email: dmitry.fomichev@wdc.com
+    build_command_prepend: "./configure"
+    build_command: "make"
+    branch_pattern: coverity_scan
 matrix:
   include:
     - os: linux
